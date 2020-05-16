@@ -167,85 +167,86 @@ while True:
     evaluate(road_li)
     print("평가 끝")
     
-    # 유전자 조합
-    old = road_li[0][1]
-    part = []
-    parts = []
-    last_parts = []
-    new_parts = []
-    new = []
-    print("리스트 준비")
-    for i in range(100):
-        if distance(old[i], old[i+1]) > road_li[0][0]/100:
-            if old[i] in part:
-                part.append(old[i+1])
-                if old[i+1] in last_parts:
-                    pass
-                else:
-                    last_parts.append(old[i+1])
-            else:
-                parts.append(part)
-                part=[]
-                new_parts.append([old[i]])
-                part.append(old[i])
-                part.append(old[i+1])
-                last_parts.append(old[i+1])
-        else:
-            pass
-    parts.pop(0)
-    last_parts.pop(-1)
-    print("평균이하 색출")
-    print("유전자 조작중...")
-    for n in range(len(new_parts)):
-        adding_li = new_parts[n]
-        print("추가할 리스트",adding_li)
-        add = False
-        standardot = adding_li[0]
-        while add == False:
-            print(len(adding_li),len(parts[n]))
-            if len(adding_li) == len(parts[n]):
-                new.append(adding_li)
-                print("new에 추가",new)
-                print("parts",parts)
-                add = True
-            else:
-                find = False
-                standard = 1
-                while find == False: 
-                    for lpart in last_parts:
-                        if distance(standardot,lpart)> 0 and distance(standardot,lpart) <= standard:
-                            print(lpart)
-                            adding_li.append(lpart)
-                            print("뽑힘",last_parts.pop(last_parts.index(lpart)))
-                            standardot = lpart
-                            find = True
-                            break
-                        else:
-                            standard += 1
-                    
-                print(standard)
-    # for i in range(101):
-    #     if random.random() < 0.02:
-    #         new.append(road_li[1][1][i])
+    # # 유전자 조합
+    # old = road_li[0][1]
+    # part = []
+    # parts = []
+    # last_parts = []
+    # new_parts = []
+    # new = []
+    # print("리스트 준비")
+    # for i in range(100):
+    #     if distance(old[i], old[i+1]) > road_li[0][0]/100:
+    #         if old[i] in part:
+    #             part.append(old[i+1])
+    #             if old[i+1] in last_parts:
+    #                 pass
+    #             else:
+    #                 last_parts.append(old[i+1])
+    #         else:
+    #             parts.append(part)
+    #             part=[]
+    #             new_parts.append([old[i]])
+    #             part.append(old[i])
+    #             part.append(old[i+1])
+    #             last_parts.append(old[i+1])
     #     else:
-    #         new.append(road_li[0][1][i])
+    #         pass
+    # parts.pop(0)
+    # last_parts.pop(-1)
+    # print("평균이하 색출")
+    # print("유전자 조작중...")
+    # for n in range(len(new_parts)):
+    #     adding_li = new_parts[n]
+    #     print("추가할 리스트",adding_li)
+    #     add = False
+    #     standardot = adding_li[0]
+    #     while add == False:
+    #         print(len(adding_li),len(parts[n]))
+    #         if len(adding_li) == len(parts[n]):
+    #             new.append(adding_li)
+    #             print("new에 추가",new)
+    #             print("parts",parts)
+    #             add = True
+    #         else:
+    #             find = False
+    #             standard = 1
+    #             while find == False: 
+    #                 for lpart in last_parts:
+    #                     if distance(standardot,lpart)> 0 and distance(standardot,lpart) <= standard:
+    #                         print(lpart)
+    #                         adding_li.append(lpart)
+    #                         print("뽑힘",last_parts.pop(last_parts.index(lpart)))
+    #                         standardot = lpart
+    #                         find = True
+    #                         break
+    #                     else:
+    #                         standard += 1
+                    
+    #             print(standard)
+    new = []
+    for i in range(101):
+        if random.random() < 0.02:
+            new.append(road_li[1][1][i])
+        else:
+            new.append(road_li[0][1][i])
 
 
-    # dis = 0
-    # for u in range(100):
-    #     d = distance(new[u],new[u+1])
-    #     dis += d
-    #     # print(dis)
-    # print('up의 길이',dis)
-    # print("업그레이드?", bool(dis<road_li[0][0]) )
-    # road_li.append([dis,new])
-    # dots = make_gene()
-    # road_li.append(sort_gene(dots))
-    # order_li = []
-    # for i in range(101):
-    #     order_li.append(road_li[0][1][i][0])
-    # print(order_li)
-    # time += 1
+    dis = 0
+    for u in range(100):
+        d = distance(new[u],new[u+1])
+        dis += d
+        # print(dis)
+    print('up의 길이',dis)
+    print("업그레이드?", bool(dis<road_li[0][0]) )
+    road_li.append([dis,new])
+    dots = make_gene()
+    road_li.append(sort_gene(dots))
+    order_li = []
+    for i in range(101):
+        order_li.append(road_li[0][1][i][0])
+    print(order_li)
+    time += 1
     # ===================================================
 
 
